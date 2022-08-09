@@ -92,7 +92,7 @@ Data Analysis
 	LowBulk <- "D2_F2_TT"
 	file <- "Hall.csv"
 
-	#Choose which chromosomes/contigs will be included in the analysis,
+#Choose which chromosomes/contigs will be included in the analysis,
 
 	Chroms <- c("Chr01","Chr02","Chr03","Chr04","Chr05","Chr06","Chr07","Chr08","Chr09","Chr10")
 
