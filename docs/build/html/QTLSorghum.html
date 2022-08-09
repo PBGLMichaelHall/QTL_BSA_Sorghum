@@ -225,78 +225,66 @@ library<span class="o">(</span><span class="s2">&quot;QTLseqr&quot;</span><span 
 </section>
 <section id="data-analysis">
 <h3>Data Analysis</h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>QTLseqr::importFromVCF<span class="o">(</span><span class="nv">file</span> <span class="o">=</span> <span class="s2">&quot;freebayes_D2.filtered.vcf&quot;</span>,highBulk <span class="o">=</span> <span class="s2">&quot;D2_F2_tt&quot;</span>,lowBulk <span class="o">=</span> <span class="s2">&quot;D2_F2_TT&quot;</span>,
-<span class="nv">chromList</span> <span class="o">=</span> c<span class="o">(</span><span class="s2">&quot;Chr01&quot;</span>,<span class="s2">&quot;Chr02&quot;</span>,<span class="s2">&quot;Chr03&quot;</span>,<span class="s2">&quot;Chr04&quot;</span>,<span class="s2">&quot;Chr05&quot;</span>,<span class="s2">&quot;Chr06&quot;</span>,<span class="s2">&quot;Chr07&quot;</span>,<span class="s2">&quot;Chr08&quot;</span>,<span class="s2">&quot;Chr09&quot;</span>,<span class="s2">&quot;Chr10&quot;</span><span class="o">)</span>,
-,filter<span class="o">=</span>FALSE, <span class="nv">outfile</span><span class="o">=</span>TRUE<span class="o">)</span>
-<span class="c1">#Set High bulk and Low bulk sample names and parser generated file name</span>
-<span class="c1">#The file name is generated from the QTLParser_1_MH function in line 119</span>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>     QTLseqr::importFromVCF<span class="o">(</span><span class="nv">file</span> <span class="o">=</span> <span class="s2">&quot;freebayes_D2.filtered.vcf&quot;</span>,highBulk <span class="o">=</span> <span class="s2">&quot;D2_F2_tt&quot;</span>,lowBulk <span class="o">=</span> <span class="s2">&quot;D2_F2_TT&quot;</span>,
+     <span class="nv">chromList</span> <span class="o">=</span> c<span class="o">(</span><span class="s2">&quot;Chr01&quot;</span>,<span class="s2">&quot;Chr02&quot;</span>,<span class="s2">&quot;Chr03&quot;</span>,<span class="s2">&quot;Chr04&quot;</span>,<span class="s2">&quot;Chr05&quot;</span>,<span class="s2">&quot;Chr06&quot;</span>,<span class="s2">&quot;Chr07&quot;</span>,<span class="s2">&quot;Chr08&quot;</span>,<span class="s2">&quot;Chr09&quot;</span>,<span class="s2">&quot;Chr10&quot;</span><span class="o">)</span>,
+     ,filter<span class="o">=</span>FALSE, <span class="nv">outfile</span><span class="o">=</span>TRUE<span class="o">)</span>
+     <span class="c1">#Set High bulk and Low bulk sample names and parser generated file name</span>
+     <span class="c1">#The file name is generated from the QTLParser_1_MH function in line 119</span>
 
-HighBulk &lt;- <span class="s2">&quot;D2_F2_tt&quot;</span>
-LowBulk &lt;- <span class="s2">&quot;D2_F2_TT&quot;</span>
-file &lt;- <span class="s2">&quot;Hall.csv&quot;</span>
+     HighBulk &lt;- <span class="s2">&quot;D2_F2_tt&quot;</span>
+     LowBulk &lt;- <span class="s2">&quot;D2_F2_TT&quot;</span>
+     file &lt;- <span class="s2">&quot;Hall.csv&quot;</span>
+
+     <span class="c1">#Choose which chromosomes/contigs will be included in the analysis,</span>
+
+     Chroms &lt;- c<span class="o">(</span><span class="s2">&quot;Chr01&quot;</span>,<span class="s2">&quot;Chr02&quot;</span>,<span class="s2">&quot;Chr03&quot;</span>,<span class="s2">&quot;Chr04&quot;</span>,<span class="s2">&quot;Chr05&quot;</span>,<span class="s2">&quot;Chr06&quot;</span>,<span class="s2">&quot;Chr07&quot;</span>,<span class="s2">&quot;Chr08&quot;</span>,<span class="s2">&quot;Chr09&quot;</span>,<span class="s2">&quot;Chr10&quot;</span><span class="o">)</span>
+
+     df &lt;-
+QTLseqr::importFromTable<span class="o">(</span>
+ <span class="nv">file</span> <span class="o">=</span> file,
+ <span class="nv">highBulk</span> <span class="o">=</span> HighBulk,
+ <span class="nv">lowBulk</span> <span class="o">=</span> LowBulk,
+ <span class="nv">chromList</span> <span class="o">=</span> chromList
+ <span class="nv">sep</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span>
+<span class="o">)</span>
+
+     <span class="c1">#Filter SNPs based on some criteria</span>
+     df_filt &lt;-
+ QTLseqr::filterSNPs<span class="o">(</span>
+ <span class="nv">SNPset</span> <span class="o">=</span> df,
+ <span class="nv">refAlleleFreq</span> <span class="o">=</span> <span class="m">0</span>.20,
+ <span class="nv">minTotalDepth</span> <span class="o">=</span> <span class="m">100</span>,
+ <span class="nv">maxTotalDepth</span> <span class="o">=</span> <span class="m">400</span>,
+ <span class="nv">minSampleDepth</span> <span class="o">=</span> <span class="m">40</span>,
+          <span class="nv">minGQ</span> <span class="o">=</span> <span class="m">99</span>,
+ <span class="nv">verbose</span> <span class="o">=</span> TRUE
+<span class="o">)</span>
+
+     <span class="c1">#Run G&#39; analysis</span>
+     df_filt&lt;-QTLseqr::runGprimeAnalysis<span class="o">(</span>
+ <span class="nv">SNPset</span> <span class="o">=</span> df_filt,
+ <span class="nv">windowSize</span> <span class="o">=</span> <span class="m">5000000</span>,
+ <span class="nv">outlierFilter</span> <span class="o">=</span> <span class="s2">&quot;deltaSNP&quot;</span>,
+ <span class="nv">filterThreshold</span> <span class="o">=</span> <span class="m">0</span>.1<span class="o">)</span>
+
+     <span class="c1">#Run QTLseq analysis</span>
+     df_filt &lt;- QTLseqr::runQTLseqAnalysis<span class="o">(</span>
+ <span class="nv">SNPset</span> <span class="o">=</span> df_filt,
+ <span class="nv">windowSize</span> <span class="o">=</span> <span class="m">5000000</span>,
+ <span class="nv">popStruc</span> <span class="o">=</span> <span class="s2">&quot;F2&quot;</span>,
+ <span class="nv">bulkSize</span> <span class="o">=</span> c<span class="o">(</span><span class="m">45</span>, <span class="m">38</span><span class="o">)</span>,
+ <span class="nv">replications</span> <span class="o">=</span> <span class="m">10000</span>,
+ <span class="nv">intervals</span> <span class="o">=</span> c<span class="o">(</span><span class="m">95</span>, <span class="m">99</span><span class="o">)</span>
+     <span class="o">)</span>
+
+     <span class="c1">#Plot</span>
+     QTLseqr::plotQTLStats<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">var</span> <span class="o">=</span> <span class="s2">&quot;Gprime&quot;</span>, <span class="nv">plotThreshold</span> <span class="o">=</span> TRUE, <span class="nv">q</span> <span class="o">=</span> <span class="m">0</span>.01<span class="o">)</span>
+     QTLseqr::plotQTLStats<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">var</span> <span class="o">=</span> <span class="s2">&quot;deltaSNP&quot;</span>, <span class="nv">plotIntervals</span>  <span class="o">=</span> TRUE<span class="o">)</span>
+
+     <span class="c1">#export summary CSV</span>
+     QTLseqr::getQTLTable<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">alpha</span> <span class="o">=</span> <span class="m">0</span>.01, <span class="nb">export</span> <span class="o">=</span> TRUE, <span class="nv">fileName</span> <span class="o">=</span> <span class="s2">&quot;my_BSA_QTL.csv&quot;</span><span class="o">)</span>
 </pre></div>
 </div>
-<p>#Choose which chromosomes/contigs will be included in the analysis,</p>
-<blockquote>
-<div><blockquote>
-<div><p>Chroms &lt;- c(“Chr01”,”Chr02”,”Chr03”,”Chr04”,”Chr05”,”Chr06”,”Chr07”,”Chr08”,”Chr09”,”Chr10”)</p>
-<p>df &lt;-</p>
-</div></blockquote>
-<dl class="simple">
-<dt>QTLseqr::importFromTable(</dt><dd><p>file = file,
-highBulk = HighBulk,
-lowBulk = LowBulk,
-chromList = chromList
-sep = “,”</p>
-</dd>
-</dl>
-<p>)</p>
-<blockquote>
-<div><blockquote>
-<div><p>#Filter SNPs based on some criteria
-df_filt &lt;-</p>
-</div></blockquote>
-<p>QTLseqr::filterSNPs(
-SNPset = df,
-refAlleleFreq = 0.20,
-minTotalDepth = 100,
-maxTotalDepth = 400,
-minSampleDepth = 40,</p>
-<blockquote>
-<div><p>minGQ = 99,</p>
-</div></blockquote>
-<p>verbose = TRUE</p>
-</div></blockquote>
-<p>)</p>
-<blockquote>
-<div><blockquote>
-<div><p>#Run G’ analysis
-df_filt&lt;-QTLseqr::runGprimeAnalysis(</p>
-</div></blockquote>
-<p>SNPset = df_filt,
-windowSize = 5000000,
-outlierFilter = “deltaSNP”,
-filterThreshold = 0.1)</p>
-<blockquote>
-<div><p>#Run QTLseq analysis
-df_filt &lt;- QTLseqr::runQTLseqAnalysis(</p>
-</div></blockquote>
-<p>SNPset = df_filt,
-windowSize = 5000000,
-popStruc = “F2”,
-bulkSize = c(45, 38),
-replications = 10000,
-intervals = c(95, 99)</p>
-<blockquote>
-<div><p>)</p>
-<p>#Plot
-QTLseqr::plotQTLStats(SNPset = df_filt, var = “Gprime”, plotThreshold = TRUE, q = 0.01)
-QTLseqr::plotQTLStats(SNPset = df_filt, var = “deltaSNP”, plotIntervals  = TRUE)</p>
-<p>#export summary CSV
-QTLseqr::getQTLTable(SNPset = df_filt, alpha = 0.01, export = TRUE, fileName = “my_BSA_QTL.csv”)</p>
-</div></blockquote>
-</div></blockquote>
-</div></blockquote>
 </section>
 </section>
 </section>
