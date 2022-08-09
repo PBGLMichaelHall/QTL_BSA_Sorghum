@@ -9,7 +9,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>A PBGL Snakemake Workflow and Quatitative Trait Locus on Bulk Segregant Analysis &mdash; QTL and BSA in Sorghum Semi-Dwarfism 1.0 documentation</title>
+  <title>A PBGL Quantitative Locus and Bulk Segregant Analysis in R Sorghum Semi-dwarfism &mdash; QTL and BSA in Sorghum Semi-Dwarfism 1.0 documentation</title>
   
 
   
@@ -84,10 +84,18 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">A PBGL Snakemake Workflow and Quatitative Trait Locus on Bulk Segregant Analysis</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">A PBGL Quantitative Locus and Bulk Segregant Analysis in R Sorghum Semi-dwarfism</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#software-prerequisites-in-an-environment-yaml-form">Software Prerequisites in an Environment .YAML Form</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#install-manually-in-rstudio">Install manually in RStudio</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#data-analysis">Data Analysis</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#data-analysis">Data Analysis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#import-vcf">Import VCF</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filter-snps">Filter SNPs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#g-prime-analysis">G Prime Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qtlseq-analysis">QTLseq Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plotting-codes">Plotting Codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plotting-images">Plotting Images</a></li>
 </ul>
 </li>
 </ul>
@@ -137,7 +145,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>A PBGL Snakemake Workflow and Quatitative Trait Locus on Bulk Segregant Analysis</li>
+      <li>A PBGL Quantitative Locus and Bulk Segregant Analysis in R Sorghum Semi-dwarfism</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -156,8 +164,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <section id="a-pbgl-snakemake-workflow-and-quatitative-trait-locus-on-bulk-segregant-analysis">
-<h1>A PBGL Snakemake Workflow and Quatitative Trait Locus on Bulk Segregant Analysis</h1>
+  <section id="a-pbgl-quantitative-locus-and-bulk-segregant-analysis-in-r-sorghum-semi-dwarfism">
+<h1>A PBGL Quantitative Locus and Bulk Segregant Analysis in R Sorghum Semi-dwarfism</h1>
 <hr class="docutils" />
 <section id="software-prerequisites-in-an-environment-yaml-form">
 <h2>Software Prerequisites in an Environment .YAML Form</h2>
@@ -223,32 +231,22 @@ library<span class="o">(</span><span class="s2">&quot;QTLseqr&quot;</span><span 
 </pre></div>
 </div>
 </section>
+</section>
 <section id="data-analysis">
-<h3>Data Analysis</h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>     QTLseqr::importFromVCF<span class="o">(</span><span class="nv">file</span> <span class="o">=</span> <span class="s2">&quot;freebayes_D2.filtered.vcf&quot;</span>,highBulk <span class="o">=</span> <span class="s2">&quot;D2_F2_tt&quot;</span>,lowBulk <span class="o">=</span> <span class="s2">&quot;D2_F2_TT&quot;</span>,
-     <span class="nv">chromList</span> <span class="o">=</span> c<span class="o">(</span><span class="s2">&quot;Chr01&quot;</span>,<span class="s2">&quot;Chr02&quot;</span>,<span class="s2">&quot;Chr03&quot;</span>,<span class="s2">&quot;Chr04&quot;</span>,<span class="s2">&quot;Chr05&quot;</span>,<span class="s2">&quot;Chr06&quot;</span>,<span class="s2">&quot;Chr07&quot;</span>,<span class="s2">&quot;Chr08&quot;</span>,<span class="s2">&quot;Chr09&quot;</span>,<span class="s2">&quot;Chr10&quot;</span><span class="o">)</span>,
-     ,filter<span class="o">=</span>FALSE, <span class="nv">outfile</span><span class="o">=</span>TRUE<span class="o">)</span>
-     <span class="c1">#Set High bulk and Low bulk sample names and parser generated file name</span>
-     <span class="c1">#The file name is generated from the QTLParser_1_MH function in line 119</span>
-
-     HighBulk &lt;- <span class="s2">&quot;D2_F2_tt&quot;</span>
-     LowBulk &lt;- <span class="s2">&quot;D2_F2_TT&quot;</span>
-     file &lt;- <span class="s2">&quot;Hall.csv&quot;</span>
-
-     <span class="c1">#Choose which chromosomes/contigs will be included in the analysis,</span>
-
-     Chroms &lt;- c<span class="o">(</span><span class="s2">&quot;Chr01&quot;</span>,<span class="s2">&quot;Chr02&quot;</span>,<span class="s2">&quot;Chr03&quot;</span>,<span class="s2">&quot;Chr04&quot;</span>,<span class="s2">&quot;Chr05&quot;</span>,<span class="s2">&quot;Chr06&quot;</span>,<span class="s2">&quot;Chr07&quot;</span>,<span class="s2">&quot;Chr08&quot;</span>,<span class="s2">&quot;Chr09&quot;</span>,<span class="s2">&quot;Chr10&quot;</span><span class="o">)</span>
-
-     df &lt;-
-QTLseqr::importFromTable<span class="o">(</span>
- <span class="nv">file</span> <span class="o">=</span> file,
- <span class="nv">highBulk</span> <span class="o">=</span> HighBulk,
- <span class="nv">lowBulk</span> <span class="o">=</span> LowBulk,
- <span class="nv">chromList</span> <span class="o">=</span> chromList
- <span class="nv">sep</span> <span class="o">=</span> <span class="s2">&quot;,&quot;</span>
-<span class="o">)</span>
-
-     <span class="c1">#Filter SNPs based on some criteria</span>
+<h2>Data Analysis</h2>
+<section id="import-vcf">
+<h3>Import VCF</h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>QTLseqr::importFromVCF<span class="o">(</span><span class="nv">file</span> <span class="o">=</span> <span class="s2">&quot;freebayes_D2.filtered.vcf&quot;</span>,highBulk <span class="o">=</span> <span class="s2">&quot;D2_F2_tt&quot;</span>,lowBulk <span class="o">=</span> <span class="s2">&quot;D2_F2_TT&quot;</span>,
+<span class="nv">chromList</span> <span class="o">=</span> c<span class="o">(</span><span class="s2">&quot;Chr01&quot;</span>,<span class="s2">&quot;Chr02&quot;</span>,<span class="s2">&quot;Chr03&quot;</span>,<span class="s2">&quot;Chr04&quot;</span>,<span class="s2">&quot;Chr05&quot;</span>,<span class="s2">&quot;Chr06&quot;</span>,<span class="s2">&quot;Chr07&quot;</span>,<span class="s2">&quot;Chr08&quot;</span>,<span class="s2">&quot;Chr09&quot;</span>,<span class="s2">&quot;Chr10&quot;</span><span class="o">)</span>,
+,filter<span class="o">=</span>FALSE, <span class="nv">outfile</span><span class="o">=</span>TRUE<span class="o">)</span>
+<span class="c1">#Set High bulk and Low bulk sample names and parser generated file name</span>
+<span class="c1">#The file name is generated from the QTLParser_1_MH function in line 119</span>
+</pre></div>
+</div>
+</section>
+<section id="filter-snps">
+<h3>Filter SNPs</h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>     <span class="c1">#Filter SNPs based on some criteria</span>
      df_filt &lt;-
  QTLseqr::filterSNPs<span class="o">(</span>
  <span class="nv">SNPset</span> <span class="o">=</span> df,
@@ -259,32 +257,90 @@ QTLseqr::importFromTable<span class="o">(</span>
           <span class="nv">minGQ</span> <span class="o">=</span> <span class="m">99</span>,
  <span class="nv">verbose</span> <span class="o">=</span> TRUE
 <span class="o">)</span>
-
-     <span class="c1">#Run G&#39; analysis</span>
-     df_filt&lt;-QTLseqr::runGprimeAnalysis<span class="o">(</span>
- <span class="nv">SNPset</span> <span class="o">=</span> df_filt,
- <span class="nv">windowSize</span> <span class="o">=</span> <span class="m">5000000</span>,
- <span class="nv">outlierFilter</span> <span class="o">=</span> <span class="s2">&quot;deltaSNP&quot;</span>,
- <span class="nv">filterThreshold</span> <span class="o">=</span> <span class="m">0</span>.1<span class="o">)</span>
-
-     <span class="c1">#Run QTLseq analysis</span>
-     df_filt &lt;- QTLseqr::runQTLseqAnalysis<span class="o">(</span>
- <span class="nv">SNPset</span> <span class="o">=</span> df_filt,
- <span class="nv">windowSize</span> <span class="o">=</span> <span class="m">5000000</span>,
- <span class="nv">popStruc</span> <span class="o">=</span> <span class="s2">&quot;F2&quot;</span>,
- <span class="nv">bulkSize</span> <span class="o">=</span> c<span class="o">(</span><span class="m">45</span>, <span class="m">38</span><span class="o">)</span>,
- <span class="nv">replications</span> <span class="o">=</span> <span class="m">10000</span>,
- <span class="nv">intervals</span> <span class="o">=</span> c<span class="o">(</span><span class="m">95</span>, <span class="m">99</span><span class="o">)</span>
-     <span class="o">)</span>
-
-     <span class="c1">#Plot</span>
-     QTLseqr::plotQTLStats<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">var</span> <span class="o">=</span> <span class="s2">&quot;Gprime&quot;</span>, <span class="nv">plotThreshold</span> <span class="o">=</span> TRUE, <span class="nv">q</span> <span class="o">=</span> <span class="m">0</span>.01<span class="o">)</span>
-     QTLseqr::plotQTLStats<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">var</span> <span class="o">=</span> <span class="s2">&quot;deltaSNP&quot;</span>, <span class="nv">plotIntervals</span>  <span class="o">=</span> TRUE<span class="o">)</span>
-
-     <span class="c1">#export summary CSV</span>
-     QTLseqr::getQTLTable<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">alpha</span> <span class="o">=</span> <span class="m">0</span>.01, <span class="nb">export</span> <span class="o">=</span> TRUE, <span class="nv">fileName</span> <span class="o">=</span> <span class="s2">&quot;my_BSA_QTL.csv&quot;</span><span class="o">)</span>
 </pre></div>
 </div>
+</section>
+<section id="g-prime-analysis">
+<h3>G Prime Analysis</h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>    <span class="c1">#Run G&#39; analysis</span>
+    df_filt&lt;-QTLseqr::runGprimeAnalysis<span class="o">(</span>
+<span class="nv">SNPset</span> <span class="o">=</span> df_filt,
+<span class="nv">windowSize</span> <span class="o">=</span> <span class="m">5000000</span>,
+<span class="nv">outlierFilter</span> <span class="o">=</span> <span class="s2">&quot;deltaSNP&quot;</span>,
+<span class="nv">filterThreshold</span> <span class="o">=</span> <span class="m">0</span>.1<span class="o">)</span>
+</pre></div>
+</div>
+</section>
+<section id="qtlseq-analysis">
+<h3>QTLseq Analysis</h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>    <span class="c1">#Run QTLseq analysis</span>
+    df_filt &lt;- QTLseqr::runQTLseqAnalysis<span class="o">(</span>
+<span class="nv">SNPset</span> <span class="o">=</span> df_filt,
+<span class="nv">windowSize</span> <span class="o">=</span> <span class="m">5000000</span>,
+<span class="nv">popStruc</span> <span class="o">=</span> <span class="s2">&quot;F2&quot;</span>,
+<span class="nv">bulkSize</span> <span class="o">=</span> c<span class="o">(</span><span class="m">45</span>, <span class="m">38</span><span class="o">)</span>,
+<span class="nv">replications</span> <span class="o">=</span> <span class="m">10000</span>,
+<span class="nv">intervals</span> <span class="o">=</span> c<span class="o">(</span><span class="m">95</span>, <span class="m">99</span><span class="o">)</span>
+    <span class="o">)</span>
+</pre></div>
+</div>
+</section>
+<section id="plotting-codes">
+<h3>Plotting Codes</h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot</span>
+QTLseqr::plotQTLStats<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">var</span> <span class="o">=</span> <span class="s2">&quot;Gprime&quot;</span>, <span class="nv">plotThreshold</span> <span class="o">=</span> TRUE, <span class="nv">q</span> <span class="o">=</span> <span class="m">0</span>.01<span class="o">)</span>
+QTLseqr::plotQTLStats<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">var</span> <span class="o">=</span> <span class="s2">&quot;deltaSNP&quot;</span>, <span class="nv">plotIntervals</span>  <span class="o">=</span> TRUE<span class="o">)</span>
+
+<span class="c1">#export summary CSV</span>
+QTLseqr::getQTLTable<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">alpha</span> <span class="o">=</span> <span class="m">0</span>.01, <span class="nb">export</span> <span class="o">=</span> TRUE, <span class="nv">fileName</span> <span class="o">=</span> <span class="s2">&quot;my_BSA_QTL.csv&quot;</span><span class="o">)</span>
+
+<span class="c1">#Plot Depth Distribution</span>
+ggplot2::ggplot<span class="o">(</span><span class="nv">data</span> <span class="o">=</span>df<span class="o">)</span> + geom_histogram<span class="o">(</span>aes<span class="o">(</span><span class="nv">x</span> <span class="o">=</span> DP.LOW + DP.HIGH<span class="o">))</span> + xlim<span class="o">(</span><span class="m">0</span>,400<span class="o">)</span>
+</pre></div>
+</div>
+</section>
+<section id="plotting-images">
+<h3>Plotting Images</h3>
+<img alt="_images/1.png" src="_images/1.png" />
+<img alt="_images/2.png" src="_images/2.png" />
+<img alt="_images/3.png" src="_images/3.png" />
+<img alt="_images/4.png" src="_images/4.png" />
+<img alt="_images/5.png" src="_images/5.png" />
+<img alt="_images/6.png" src="_images/6.png" />
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">#The plot reveals a skewed G Prime statistic with a really small variance. Perhaps it is due to the small number of variants called.</span>
+<span class="c1">#In addition, Hampels outlier filter in the second argument, can also be changed to &quot;deltaSNP&quot;</span>
+QTLseqr::plotGprimeDist<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">outlierFilter</span> <span class="o">=</span> <span class="s2">&quot;Hampel&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<img alt="_images/7.png" src="_images/7.png" />
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">#We can see raw data before and after our filtering step</span>
+QTLseqr::plotGprimeDist<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">outlierFilter</span> <span class="o">=</span> <span class="s2">&quot;deltaSNP&quot;</span>,filterThreshold <span class="o">=</span> <span class="m">0</span>.1<span class="o">)</span>
+</pre></div>
+</div>
+<img alt="_images/8.png" src="_images/8.png" />
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot Snps as a function of chromosome and position values</span>
+QTLseqr::plotQTLStats<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">var</span> <span class="o">=</span> <span class="s2">&quot;nSNPs&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<img alt="_images/9.png" src="_images/9.png" />
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">#Using QTLStats funciton plot Gprime Statistic with False Discovery Rate Threhshold as a third argument boolean operator as TRUE. The q value is used as FDR threshold null value is 0.05%.</span>
+QTLseqr::plotQTLStats<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">var</span> <span class="o">=</span> <span class="s2">&quot;Gprime&quot;</span>, <span class="nv">plotThreshold</span> <span class="o">=</span> TRUE, <span class="nv">q</span> <span class="o">=</span> <span class="m">0</span>.01<span class="o">)</span>
+ggplot2::ggsave<span class="o">(</span><span class="nv">filename</span> <span class="o">=</span> <span class="s2">&quot;GPrime.png&quot;</span>,plot <span class="o">=</span> last_plot<span class="o">())</span>
+</pre></div>
+</div>
+<img alt="_images/10.png" src="_images/10.png" />
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">#Again using plotQTLStats change second argument varaible to deltaSNP and plot.</span>
+QTLseqr::plotQTLStats<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">var</span> <span class="o">=</span> <span class="s2">&quot;deltaSNP&quot;</span>, <span class="nv">plotIntervals</span>  <span class="o">=</span> TRUE<span class="o">)</span>
+ggplot2::ggsave<span class="o">(</span><span class="nv">filename</span> <span class="o">=</span> <span class="s2">&quot;DeltaSNPInterval.png&quot;</span>,plot <span class="o">=</span> last_plot<span class="o">())</span>
+</pre></div>
+</div>
+<img alt="_images/11.png" src="_images/11.png" />
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">#Add subset argument to focus on particular chromosomes one, three, four, and six.</span>
+<span class="c1">#The reason is due to signficant QTL regions</span>
+QTLseqr::plotQTLStats<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">var</span> <span class="o">=</span> <span class="s2">&quot;Gprime&quot;</span>,plotThreshold <span class="o">=</span> TRUE,q<span class="o">=</span><span class="m">0</span>.01,subset <span class="o">=</span> c<span class="o">(</span><span class="s2">&quot;Chr01&quot;</span>,<span class="s2">&quot;Chr03&quot;</span>,<span class="s2">&quot;Chr04&quot;</span>,<span class="s2">&quot;Chr06&quot;</span><span class="o">))</span>
+</pre></div>
+</div>
+<img alt="_images/12.png" src="_images/12.png" />
 </section>
 </section>
 </section>
