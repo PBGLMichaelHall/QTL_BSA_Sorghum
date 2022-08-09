@@ -17,28 +17,28 @@ Software Prerequisites in an Environment .YAML Form
 	name: QTLseqr
 
 	channels:
-  	- default
-  	- bioconda
-  	- conda-forge
-  	- r
+        - default
+        - bioconda
+        - conda-forge
+        - r
 
 	dependencies:
-  	- r-modeest >= 2.3.2
-  	- r-ggplot2 >= 2.2.0
-  	- r-gtools
-  	- r-dplyr
-  	- r-readr
-  	- r-tidyr
-  	- r-Rcpp
-  	- r-locfit
-  	- r-knitr
-  	- r-rmarkdown
-  	- r-kableExtra
-  	- r-devtools
-  	- r-data.table
-  	- r-vcfR
-  	- r-optparse
-  	- r-base >= 4.1.0
+        - r-modeest >= 2.3.2
+        - r-ggplot2 >= 2.2.0
+        - r-gtools
+        - r-dplyr
+        - r-readr
+        - r-tidyr
+        - r-Rcpp
+        - r-locfit
+        - r-knitr
+        - r-rmarkdown
+        - r-kableExtra
+        - r-devtools
+        - r-data.table
+        - r-vcfR
+        - r-optparse
+        - r-base >= 4.1.0
   
 Install manually in RStudio
 ----------------------------
@@ -136,8 +136,8 @@ QTLseq Analysis
     intervals = c(95, 99)
 	)
 
-Plotting Codes
---------------
+QTL Peak Mapping
+----------------
 
 .. code:: shell
 
@@ -147,13 +147,32 @@ Plotting Codes
 
 	#export summary CSV
 	QTLseqr::getQTLTable(SNPset = df_filt, alpha = 0.01, export = TRUE, fileName = "my_BSA_QTL.csv")
-	
-	#Plot Depth Distribution
-	ggplot2::ggplot(data =df) + geom_histogram(aes(x = DP.LOW + DP.HIGH)) + xlim(0,400)
 
+.. image:: ../images/QTLPeaks.png
+   :target: https://github.com/PBGLMichaelHall/QTL_BSA_Sorghum/blob/main/docs/images/QTLPeaks.png
+
+High Impact Variants QTL1 on Chromosome 4
+-----------------------------------------
+
+.. code:: shell
+
+	df <- df_filt %>% dplyr::filter(CHROM=="Chr04")
+	df <- df %>% dplyr::filter(POS >= 1757999 & POS <= 46793997)
+	write.table(df, file = "HighImpactVariants.txt", row.names = FALSE)
+
+
+.. image:: ../images/HighImpactVariants.png
+   :target: https://github.com/PBGLMichaelHall/QTL_BSA_Sorghum/blob/main/docs/images/HighImpactVariants.png
 
 Plotting Images
 ---------------
+
+
+.. code:: shell
+
+	#Plot Depth Distribution
+	ggplot2::ggplot(data =df) + geom_histogram(aes(x = DP.LOW + DP.HIGH)) + xlim(0,400)
+
 
 .. image:: ../images/1.png
 

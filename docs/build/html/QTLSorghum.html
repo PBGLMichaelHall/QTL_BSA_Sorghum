@@ -94,7 +94,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#filter-snps">Filter SNPs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#g-prime-analysis">G Prime Analysis</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#qtlseq-analysis">QTLseq Analysis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#plotting-codes">Plotting Codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qtl-peak-mapping">QTL Peak Mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#high-impact-variants-qtl1-on-chromosome-4">High Impact Variants QTL1 on Chromosome 4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#plotting-images">Plotting Images</a></li>
 </ul>
 </li>
@@ -285,22 +286,33 @@ library<span class="o">(</span><span class="s2">&quot;QTLseqr&quot;</span><span 
 </pre></div>
 </div>
 </section>
-<section id="plotting-codes">
-<h3>Plotting Codes</h3>
+<section id="qtl-peak-mapping">
+<h3>QTL Peak Mapping</h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot</span>
 QTLseqr::plotQTLStats<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">var</span> <span class="o">=</span> <span class="s2">&quot;Gprime&quot;</span>, <span class="nv">plotThreshold</span> <span class="o">=</span> TRUE, <span class="nv">q</span> <span class="o">=</span> <span class="m">0</span>.01<span class="o">)</span>
 QTLseqr::plotQTLStats<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">var</span> <span class="o">=</span> <span class="s2">&quot;deltaSNP&quot;</span>, <span class="nv">plotIntervals</span>  <span class="o">=</span> TRUE<span class="o">)</span>
 
 <span class="c1">#export summary CSV</span>
 QTLseqr::getQTLTable<span class="o">(</span><span class="nv">SNPset</span> <span class="o">=</span> df_filt, <span class="nv">alpha</span> <span class="o">=</span> <span class="m">0</span>.01, <span class="nb">export</span> <span class="o">=</span> TRUE, <span class="nv">fileName</span> <span class="o">=</span> <span class="s2">&quot;my_BSA_QTL.csv&quot;</span><span class="o">)</span>
-
-<span class="c1">#Plot Depth Distribution</span>
-ggplot2::ggplot<span class="o">(</span><span class="nv">data</span> <span class="o">=</span>df<span class="o">)</span> + geom_histogram<span class="o">(</span>aes<span class="o">(</span><span class="nv">x</span> <span class="o">=</span> DP.LOW + DP.HIGH<span class="o">))</span> + xlim<span class="o">(</span><span class="m">0</span>,400<span class="o">)</span>
 </pre></div>
 </div>
+<a class="reference external image-reference" href="https://github.com/PBGLMichaelHall/QTL_BSA_Sorghum/blob/main/docs/images/QTLPeaks.png"><img alt="_images/QTLPeaks.png" src="_images/QTLPeaks.png" /></a>
+</section>
+<section id="high-impact-variants-qtl1-on-chromosome-4">
+<h3>High Impact Variants QTL1 on Chromosome 4</h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>df &lt;- df_filt %&gt;% dplyr::filter<span class="o">(</span><span class="nv">CHROM</span><span class="o">==</span><span class="s2">&quot;Chr04&quot;</span><span class="o">)</span>
+df &lt;- df %&gt;% dplyr::filter<span class="o">(</span>POS &gt;<span class="o">=</span> <span class="m">1757999</span> <span class="p">&amp;</span> POS &lt;<span class="o">=</span> <span class="m">46793997</span><span class="o">)</span>
+write.table<span class="o">(</span>df, <span class="nv">file</span> <span class="o">=</span> <span class="s2">&quot;HighImpactVariants.txt&quot;</span>, row.names <span class="o">=</span> FALSE<span class="o">)</span>
+</pre></div>
+</div>
+<a class="reference external image-reference" href="https://github.com/PBGLMichaelHall/QTL_BSA_Sorghum/blob/main/docs/images/HighImpactVariants.png"><img alt="_images/HighImpactVariants.png" src="_images/HighImpactVariants.png" /></a>
 </section>
 <section id="plotting-images">
 <h3>Plotting Images</h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plot Depth Distribution</span>
+ggplot2::ggplot<span class="o">(</span><span class="nv">data</span> <span class="o">=</span>df<span class="o">)</span> + geom_histogram<span class="o">(</span>aes<span class="o">(</span><span class="nv">x</span> <span class="o">=</span> DP.LOW + DP.HIGH<span class="o">))</span> + xlim<span class="o">(</span><span class="m">0</span>,400<span class="o">)</span>
+</pre></div>
+</div>
 <img alt="_images/1.png" src="_images/1.png" />
 <img alt="_images/2.png" src="_images/2.png" />
 <img alt="_images/3.png" src="_images/3.png" />
