@@ -262,5 +262,10 @@ Plotting Images
 
 .. image:: ../images/12.png
 
+Sorghum Genomics Purdue Project
+-------------------------------
 
 
+.. raw:: html
+
+   <A HREF="Functional Gene Discovery Platform for Sorghum Genomics.html">VariantHTML</A>
