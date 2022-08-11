@@ -268,4 +268,4 @@ Sorghum Genomics Purdue Project
 
 .. raw:: html
 
-   <A HREF="Functional Gene Discovery Platform for Sorghum Genomics.html">VariantHTML</A>
+   <A HREF="Functional Gene Discovery Platform for Sorghum Genomics.html">Purdue_Project_Discovering_GenesL</A>
