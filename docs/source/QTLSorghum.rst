@@ -268,4 +268,4 @@ Sorghum Genomics Purdue Project
 
 .. raw:: html
 
-   <A HREF="Functional Gene Discovery Platform for Sorghum Genomics.html">Purdue_Project_Discovering_GenesL</A>
+   <A HREF="https://htmlpreview.github.io/?https://github.com/PBGLMichaelHall/QTL_BSA_Sorghum/blob/main/Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics.html"</A>
