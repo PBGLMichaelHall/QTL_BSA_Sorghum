@@ -1,0 +1,894 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="js canvas canvastext geolocation crosswindowmessaging no-websqldatabase indexeddb hashchange historymanagement draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions  video audio localstorage sessionstorage webworkers applicationcache svg smil svgclippaths   ng-scope fontface" ng-app="myApp" lang="en"><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}</style>
+    <meta content="$description.value" name="description">
+    <meta content="$keywords.value" name="keywords">
+    <meta content="$author.value" name="author">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, user-scalable=no" name="viewport">
+    <title>Functional Gene Discovery Platform for Sorghum Genomics</title>
+    <link href="https://www.purdue.edu/purdue/images/favicon.ico" rel="shortcut icon">
+    <script type="text/javascript" async="" src="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/ga.js"></script><script async="true" src="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/modernizr-1.5.min.js" type="text/javascript">
+    </script>
+    <!-- Bootstrap core CSS -->
+    <!-- <link href="//www.purdue.edu/purdue/css/bootstrap.min.css" rel="stylesheet"/> -->
+    <!-- Font Awesome -->
+    <link href="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/font-awesome.css" rel="stylesheet">
+
+    <style type="text/css">
+
+     .hero {background-image:url('images/ResearchersInSorghumField.jpg');}
+
+    </style>
+    <!--   <script async="true" src="//www.purdue.edu/purdue/js/jquery-1.10.2.min.js" type="text/javascript"></script> -->
+    <script src="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/jquery.min.js"></script>
+    <!-- Includes specific to this application -->
+
+    <link rel="stylesheet" href="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/mainStyle.css">
+    <link rel="stylesheet" href="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/prism.css">
+    <link rel="stylesheet" href="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/bootstrap.min.css"> 
+    <script src="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/prism.js"></script>
+    <!--    <script src="assets/js/pageSelect.directive.js"></script> -->
+    <script src="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/angular.js"></script>
+    <script src="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/ui-bootstrap.min.js"></script>
+    <script src="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/ui-bootstrap-tpls.min.js"></script>
+    <script src="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/smart-table.js"></script>
+    <script src="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/app.js"></script>
+
+    <!-- Main CSS -->
+    <!--<link href="//www.purdue.edu/purdue/css/styles.css" rel="stylesheet"/>-->
+    <!--<link href="css/style-pu2020.css" rel="stylesheet"/>-->
+    <link href="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/pu-2014.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="css/table.css"/> -->
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="//www.purdue.edu/purdue/js/html5shiv.js"></script>
+    <script src="//www.purdue.edu/purdue/js/respond.min.js"></script>
+    <![endif]-->
+    <script src="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/google_jquery_link_tracking.js" type="text/javascript"></script>
+    <script type="text/javascript">// <![CDATA[
+     var _gaq = _gaq || [];
+     
+     // If you have your own Google Analytics account,
+     // change the account number in the line below to your account
+     // The number here is for the main Purdue analytics account
+     _gaq.push(['_setAccount', 'UA-2785081-1']);
+     _gaq.push(['_trackPageview']);
+     
+     // If you're tracking to your own account above and would also like track page views
+     // to the main Purdue account, include the block of code below:
+     
+     // If your site is not on www.purdue.edu, change "yoursubdomain" to your actual subdomain.
+     // For example, the admissions site would use 'admissions.purdue.edu' in the line below.
+     // _gaq.push(['b._setDomainName', 'yoursubdomain.purdue.edu']);
+
+     // Set the account on the secondary tracker to the main Purdue analytics account
+     // _gaq.push(['b._setAccount', 'UA-2785081-1']);
+     // _gaq.push(['b._trackPageview']);
+     
+     // Load the Google Analytics asynchronous API
+     (function() {
+       var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+     })();
+     // ]]></script>
+  </head>
+  <body style="" ng-controller="variantsCtrl as vc" class="ng-scope">
+    <div class="navbar navbar-inverse goldbar" role="navigation">
+      <div class="container">
+	<div class="navbar-header">
+	  <button class="navbar-toggle" data-target=".gold" data-toggle="collapse" type="button"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+	  <p>Quick Links</p>
+	  <button class="navbar-toggle search" data-target="#search" data-toggle="collapse" style="float:right;" type="button"> 
+	    <i class="fa fa-search fa-lg"></i> 
+	  </button>
+	</div>
+	<div class="collapse navbar-collapse right search" id="search">
+	  <ul class="nav navbar-nav navbar-right">
+	    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false"><i class="fa fa-search fa-lg"></i></a>
+	      <ul class="dropdown-menu">
+		<li>
+		  <form role="search" class="ng-pristine ng-valid">
+		    <div class="form-group">
+		      <div id="cse-search-form">Loading</div>
+		      <script src="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/loader.js" type="text/javascript"></script>
+		      <script type="text/javascript">// <![CDATA[
+		       google.load('search', '1', {language: 'en', style: google.loader.themes.MINIMALIST});
+		       google.setOnLoadCallback(function() {
+			 var customSearchOptions = {};
+			 var orderByOptions = {};
+			 orderByOptions['keys'] = [{label: 'Relevance', key: ''} , {label: 'Date', key: 'date'}];
+			 customSearchOptions['enableOrderBy'] = true;
+			 customSearchOptions['orderByOptions'] = orderByOptions;
+			 var customSearchControl =   new google.search.CustomSearchControl('017690826183710227054:mjxnqnpskjk', customSearchOptions);
+			 customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+			 var options = new google.search.DrawOptions();
+			 options.enableSearchboxOnly('//www.purdue.edu/purdue/search.html', 'q');
+			 customSearchControl.draw('cse-search-form', options);
+		       }, true);
+		       // ]]></script>
+		    </div>
+		  </form>
+		</li>
+	      </ul>
+	    </li>
+	  </ul>
+	</div>
+	<div class="collapse navbar-collapse gold">
+	  <ul class="nav navbar-nav information">
+	    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true" aria-expanded="false">Find Info For <b class="caret"></b></a>
+	      <ul class="dropdown-menu"><p class="hide">Find Info For</p>
+		<li><a href="http://www.purdue.edu/purdue/current_students/index.html">Current Students</a></li>
+		<li><a href="http://www.purdue.edu/purdue/prospective_students/index.html">Prospective Students</a></li>
+		<li><a href="http://www.purdue.edu/purdue/alumni/index.html">Alumni and Friends</a></li>
+		<li><a href="http://www.purdue.edu/purdue/engage/index.html">Engage with Purdue</a></li>
+		<li><a href="http://www.purdue.edu/purdue/careers/index.html">Careers</a></li>
+		<li><a href="http://www.purdue.edu/purdue/research/index.html">Research and Innovation</a></li>
+	      </ul>
+	    </li>
+	  </ul>
+	  <ul class="nav navbar-nav right quicklinks"><p class="hide">Quick Links</p>
+	    <li><a href="http://www.purdue.edu/purdue/admissions/index.html">Apply</a></li>
+	    <li><a href="http://www.purdue.edu/newsroom/">News</a></li>
+	    <li><a href="http://www.purdue.edu/president/">President</a></li>
+	    <li><a href="http://www.purdueofficialstore.com/">Shop</a></li>
+	    <li><a href="http://www.purdue.edu/visit/">Visit</a></li>
+	    <li><a href="https://securelb.imodules.com/s/1461/research/hybrid/index.aspx?sid=1461&amp;gid=1010&amp;pgid=1754&amp;cid=4045">Give</a></li>
+	    <li><a href="http://www.purdue.edu/ea">Emergency</a></li>
+	  </ul>
+	</div>
+	<!--/.nav-collapse --></div>
+    </div>
+    <div class="top">
+      <div class="container">
+	<div class="row">
+	  <div class="logo col-lg-2 col-md-3 col-sm-3 col-xs-12"><a href="https://www.purdue.edu/"><img alt="Purdue University" src="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/logo.png"></a></div>
+	  <div class="department col-lg-9 col-md-9 col-sm-9 col-xs-8"><a href="https://www.purdue.edu/sorghumgenomics/index.html">
+	    College of Agriculture
+	  </a>
+          </div>
+	</div>
+      </div>
+    </div>
+    <div class="page">
+      <div class="container">
+        
+          <div class="ng-isolate-scope">
+  <ul class="nav nav-tabs" ng-class="{'nav-stacked': vertical, 'nav-justified': justified}" ng-transclude="">
+            <li ng-class="{active: active, disabled: disabled}" heading="Home" active="tabs[0].active" class="ng-isolate-scope">
+  <a ng-click="select()" tab-heading-transclude="" class="ng-binding">Home</a>
+</li>
+            <li ng-class="{active: active, disabled: disabled}" heading="Search" active="tabs[1].active" class="ng-isolate-scope active">
+  <a ng-click="select()" tab-heading-transclude="" class="ng-binding">Search</a>
+</li>
+            <li ng-class="{active: active, disabled: disabled}" heading="Table" active="tabs[2].active" class="ng-isolate-scope">
+  <a ng-click="select()" tab-heading-transclude="" class="ng-binding">Table</a>
+</li>
+            <li ng-class="{active: active, disabled: disabled}" heading="Details" active="tabs[3].active" class="ng-isolate-scope">
+  <a ng-click="select()" tab-heading-transclude="" class="ng-binding">Details</a>
+</li>
+            <li ng-class="{active: active, disabled: disabled}" heading="Germplasm" active="tabs[4].active" class="ng-isolate-scope">
+  <a ng-click="select()" tab-heading-transclude="" class="ng-binding">Germplasm</a>
+</li>
+            <li ng-class="{active: active, disabled: disabled}" heading="Methodology" active="tabs[5].active" class="ng-isolate-scope">
+  <a ng-click="select()" tab-heading-transclude="" class="ng-binding">Methodology</a>
+</li>
+            <li ng-class="{active: active, disabled: disabled}" heading="Contact Info" active="tabs[6].active" class="ng-isolate-scope">
+  <a ng-click="select()" tab-heading-transclude="" class="ng-binding">Contact Info</a>
+</li>
+          </ul>
+  <div class="tab-content">
+    <!-- ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+    
+              <div class="content ng-scope">
+                <div class="container">
+                  <div class="row">
+                    <div class="hero col-lg-4 col-md-4 col-sm-4">
+                      <div class="carousel-caption">
+                        
+                        <h2>Sorghum Genomics</h2>
+                        <p>Gene Discovery Platform</p>
+
+                      </div>
+                    </div>
+                    <div class="maincontent col-lg-8 col-md-8 col-sm-8 right">
+                      <h2>Functional Gene Discovery Platform for Sorghum</h2>
+                      <p>
+                        Tremendous gaps remain in our understanding of 
+the valuable traits contained in sorghum genetic resources. Advances in 
+genomics, targeted mutagenesis, reverse genetics and whole-genome DNA 
+sequencing can enable efficient gene discovery and germplasm mining for 
+crop improvement.  With the support of the Bill &amp; Melinda Gates 
+Foundation, we are developing genetic and genomic resources that can be 
+used to leverage the phenotypic variation in sorghum.  By developing 
+tools in the genome-sequenced variety BTx623 and elite germplasm adapted
+ for Africa, this project accelerates the ability of sorghum researchers
+ to translate knowledge into practical applications in sorghum 
+improvement.
+                      </p>
+                      <h3>This site enables you to search for Sorghum lines containing variations, both natural and ems induced, in coding sequences. </h3> <p>
+ To use this site:
+                        1) Enter search criteria on the 'Search' tab and
+ press the 'Get Variants' button.
+                        2) View list of variants in the 'Table' tab. The
+ default value for the number of records to return is 500 records at a 
+time but you can set this to a lower value if you have a slow internet 
+connection. If there are more records meeting your criteria than the 
+number you have selected to have returned, then double arrow buttons 
+(&lt;&lt; and &gt;&gt;) will appear at that bottom corners of the 
+'Table' page allowing you to page through sets of records.
+                        3) For each record, the Transcipt name is a live
+ link that will take you to a Phytozome page with information about the 
+transcipt.
+                        4) Press the red button at the right of a row on
+ the 'Table' tab to view additional details of a given variant on the 
+'Details' tab.
+
+                    </p></div> 
+                  </div>
+                  <div class="row">
+                    <div class="maincontent col-lg-9 col-md-9 col-sm-9 right">
+                      <p> <img src="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/JPG_Red_Logo_300_DPI.jpg" alt="B&amp;MGF" style="margin:0px 50px" width="175">  <!-- HEIGHT=64> -->
+                        This project was made possible, in part, by the support of the Bill &amp; Melinda Gates Foundation.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope active" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+    
+              <div class="container ng-scope">
+                <p></p>
+                <div class="row">
+                  <div class="col-md-4">
+	            <form class="ng-pristine ng-valid ng-valid-maxlength">
+	              <p>Variation Source (ems or nat): 
+	                <input type="text" ng-model="$scope.varSource" size="3" maxlength="3" class="ng-pristine ng-untouched ng-valid ng-valid-maxlength">
+	              </p>
+                    </form>
+                  </div>
+                  <div class="col-md-4">
+	            <form class="ng-pristine ng-valid ng-valid-maxlength">
+                      <p>Sample_ID: 
+	                <input type="text" ng-model="$scope.sampleId" size="17" maxlength="16" class="ng-pristine ng-untouched ng-valid ng-valid-maxlength">
+	              </p>
+                    </form>
+                  </div>
+                  <div class="col-md-4">
+	            <form class="ng-pristine ng-valid ng-valid-maxlength">
+                      <p>Transcript: 
+	                <input type="text" ng-model="$scope.gene" size="20" maxlength="19" class="ng-pristine ng-untouched ng-valid ng-valid-maxlength">
+	              </p>
+                    </form>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+	            <form class="ng-pristine ng-valid ng-valid-maxlength">
+                      <p>Chromosome (as Chr01, Chr02, etc.): 
+	                <input type="text" ng-model="$scope.chrom" size="5" maxlength="5" class="ng-pristine ng-untouched ng-valid ng-valid-maxlength">
+	              </p>
+                    </form>
+                  </div>
+                  <div class="col-md-4">
+	            <form class="ng-pristine ng-valid ng-valid-maxlength">
+	              <p>Minimum Positon on Chromosome: 
+	                <input type="text" ng-model="$scope.posnMin" size="12" maxlength="10" class="ng-pristine ng-untouched ng-valid ng-valid-maxlength">
+	              </p>
+                    </form>
+                  </div>
+                  <div class="col-md-4">
+	            <form class="ng-pristine ng-valid ng-valid-maxlength">
+	              <p>Maximum Positon on Chromosome: 
+	                <input type="text" ng-model="$scope.posnMax" size="12" maxlength="10" class="ng-pristine ng-untouched ng-valid ng-valid-maxlength">
+	              </p>
+                    </form>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+	            <form class="ng-pristine ng-valid ng-valid-maxlength">
+                      <p>Sorghum Annotation (will match partial words and phrases): 
+	                <input type="text" ng-model="$scope.sorgAnno" size="30" maxlength="30" class="ng-pristine ng-untouched ng-valid ng-valid-maxlength">
+	              </p>
+                    </form>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+	            <form class="ng-pristine ng-valid ng-valid-maxlength">
+                      <p>Maize Annotation (will match partial words and phrases): 
+	                <input type="text" ng-model="$scope.maizeAnno" size="30" maxlength="30" class="ng-pristine ng-untouched ng-valid ng-valid-maxlength">
+	              </p>
+                    </form>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+	            <form class="ng-pristine ng-valid ng-valid-maxlength">
+                      <p>Arabidopsis Annotation (will match partial words and phrases): 
+	                <input type="text" ng-model="$scope.arabidopsisAnno" size="30" maxlength="30" class="ng-pristine ng-untouched ng-valid ng-valid-maxlength">
+	              </p>
+                    </form>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2">
+	            <form class="ng-pristine ng-valid ng-valid-parse ng-valid-maxlength">
+                      <p>Number of records to fetch: 
+	                <input type="text" ng-model="numberOfRecords.value" size="5" maxlength="5" class="ng-pristine ng-untouched ng-valid ng-valid-parse ng-valid-maxlength" value="500">
+	              </p>
+                    </form>
+                  </div>
+                  <div class="col-md-4">
+                      <p>If you are on a slow internet connection, you 
+may want to change from the default value of 500 to a smaller value, 
+e.g. 50 or 100.
+	              </p>
+                  </div>
+                  <div class="col-md-6">
+                    <form class="ng-pristine ng-valid">
+	              <button id="getVariants" ng-click="getVariant($scope.varSource, $scope.sampleId,
+                                                         $scope.gene,$scope.chrom,$scope.posnMin,$scope.posnMax,
+                                                         $scope.sorgAnno,$scope.maizeAnno,$scope.arabidopsisAnno
+                                                         )">Get Variants</button><br>
+	            </form>
+                  </div>
+	        </div>
+              </div>
+              <p class="ng-scope"></p>
+            </div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+    
+              <!--
+	      <label for="items">items by page</label>
+	      <input class="input-sm form-control" name="items" id="items" type="number" ng-model="itemsByPage" />
+              -->
+	      <div class="ng-scope">
+                  
+                </div><table st-table="displayedCollection" st-safe-src="rowCollection" class="table table-striped ng-scope">
+	        <thead>
+	          <tr>
+	            <!--<th class="row-1 row-row_id">row_id</th>
+	            <th class="row-1 row-Sample_ID">Sample_ID</th>
+	            <th class="row-1 row-Chrom">Chrom</th>
+	            <th class="row-1 row-Posn">Posn</th>
+	            <th class="row-1 row-Sorghum_Annotation">Sorghum Annotation</th> -->
+	            <th>row_id</th>
+	            <th>Variation Source</th>
+	            <th>Sample</th>
+	            <th st-sort="Chrom">Chrom</th>
+	            <th st-sort="Posn">Posn</th>
+                    <th>Transcript</th>
+	            <th>Sorghum Annotation</th>
+	            <th>View Details</th>
+	          </tr>
+                  <tr>
+                    <th></th>
+                    <th>
+		      <input st-search="Variation_Source" class="input-sm form-control" type="search">
+		    </th>
+                    <th>
+		      <input st-search="Sample_ID" class="input-sm form-control" type="search">
+		    </th>
+                    <th>
+		      <input st-search="Chrom" placeholder="e.g. 01" class="input-sm form-control" type="search">
+		    </th>
+                    <th>
+		    </th>
+                    <th>
+		      <input st-search="Gene" class="input-sm form-control" type="search">
+		    </th>
+                    <th>
+		      <input st-search="Sorghum_Annotation" placeholder="e.g. peptide" class="input-sm form-control" type="search">
+		    </th>
+                    <!--
+		    <th colspan="5"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+                    -->
+		  </tr>
+	        </thead>
+	        <tbody ng-show="!vc.isLoading">
+	          <!-- ngRepeat: row in displayedCollection -->	
+	        </tbody>
+                <tbody ng-show="vc.isLoading" class="ng-hide">
+	          <tr>
+		    <td colspan="4" class="text-center">Loading ... </td>
+	          </tr>
+	        </tbody>
+                <tfoot>
+	          <tr>
+                    <td>
+                      <button id="previousSet" ng-show="notFirstSet()" ng-click="getPreviousSet()" class="ng-hide">&lt;&lt;</button>
+                    </td>
+		    <td colspan="6" class="text-center">
+		      <div st-items-by-page="itemsByPage" st-pagination="" st-template="assets/html/pagination.custom.html" class="ng-isolate-scope"><!-- ngIf: pages.length >= 2 -->
+</div>
+
+		    </td>
+                    <td>
+                      <button id="nextSet" ng-show="hasMoreData" ng-click="getNextSet()" class="ng-hide">&gt;&gt;</button>
+                    </td>  
+	          </tr>
+	        </tfoot> 
+                
+                <!--  
+                <tfoot>
+                <tr>
+                <td colspan="5" class="text-center">
+                <div st-pagination="15" st-items-by-page="itemsByPage" st-displayed-pages={{pages}}></div>
+                </td>
+                </tr>
+                </tfoot>
+                -->
+	      </table>
+            </div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+    
+              <div class="container ng-scope">
+                <p></p>
+                <div class="row">
+                  <div class="col-md-2"><h4>Sample_ID:</h4></div>
+                  <div class="col-md-2"><h4>Variation_Source:</h4></div>
+                  <div class="col-md-2"><h4>row_id:</h4></div>
+                  <div class="col-md-3"><h4>GRIN_ID:</h4></div>
+                  <div class="col-md-3"><h4>Sequencing_ID:</h4></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-2"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-2"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-3"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-3"><h5 class="ng-binding"></h5></div>
+                </div>
+                <p></p>
+                <div class="row">
+                  <div class="col-md-2"><h4>Transcipt:</h4></div>
+                  <div class="col-md-2"><h4>Chromosome:</h4></div>
+                  <div class="col-md-2"><h4>Position:</h4></div>
+                  <div class="col-md-3"><h4>Phytozome_PACID:</h4></div>
+                  <div class="col-md-3"><h4>Genotype_Info:</h4></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-2"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-2"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-3"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-3"><h5 class="ng-binding"></h5></div>
+                </div>
+                <p></p>
+                <div class="row">
+                  <div class="col-md-2"><h4>Reference:</h4></div>
+                  <div class="col-md-2"><h4>Allele:</h4></div>
+                  <div class="col-md-2"><h4>Codon_Change:</h4></div>
+                  <div class="col-md-3"><h4>Amino_Acid_Change:</h4></div>
+                  <div class="col-md-3"><h4>Tag:</h4></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-2"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-2"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-3"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-3"><h5 class="ng-binding"></h5></div>
+                </div>
+                <p></p>
+                <div class="row">
+                  <div class="col-md-2"><h4>Impact:</h4></div>
+                  <div class="col-md-2"><h4>Impact Type:</h4></div>
+                  <div class="col-md-2"><h4>Quality:</h4></div>
+                  <!-- <div class="col-md-3"><h4>SIFT_Score:</h4></div> >
+                  <div class="col-md-3"><h4>SIFT_Effect_Pred:</h4></div> -->
+                </div>
+                <div class="row">
+                  <div class="col-md-2"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-2"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-2"><h5 class="ng-binding"></h5></div>
+                  <!-- <div class="col-md-3"><h5>{{selectedRow.SIFT_Score}}</h5></div>
+                  <div class="col-md-3"><h5>{{selectedRow.SIFT_Effect_Pred}}</h5></div> -->
+                </div>
+                <p></p>
+                <div class="row">
+                  <div class="col-md-9"><h4>Sorghum Annotation:</h4></div>
+                  <div class="col-md-3"><h4></h4></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-9"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-3"><h5></h5></div>
+                </div>
+                <p></p>
+                <div class="row">
+                  <div class="col-md-9"><h4>Maize Annotation:</h4></div>
+                  <div class="col-md-3"><h4>Maize BLAST E Value</h4></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-9"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-3"><h5 class="ng-binding"></h5></div>
+                </div>
+                <p></p>
+                <div class="row">
+                  <div class="col-md-9"><h4>Arabidopsis Annotation:</h4></div>
+                  <div class="col-md-3"><h4>Arabidpsis BLAST E Value</h4></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-9"><h5 class="ng-binding"></h5></div>
+                  <div class="col-md-3"><h5 class="ng-binding"></h5></div>
+                </div>
+                <p></p>
+              </div>
+            </div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+    
+              <h2 class="ng-scope">Germplasm</h2>
+              <p class="ng-scope">
+                </p><ul class="ng-scope">
+                  <li>ems mutants: Seed of most of the ems mutant lines 
+is available through the U.S. National Germplasm System. Lines which are
+ available are identified with a Plant Introduction identifier in the 
+'GRIN_ID' field of the 'Details' tab. The Plant Introduction identifier 
+(e.g. 'PI 123456') can be used as a search criterion for ordering seed 
+from the Germplasm Resource Information Network (GRIN) web portal: <a href="https://npgsweb.ars-grin.gov/gringlobal/search.aspx?">GRIN-global search</a>.
+ For a complete list of the available ems mutants, use the 'Advanced 
+Search Criteria' feature of the portal, select 'Sorghum EMS Mutants 
+(Purdue)' as the accession group name and 'Equal To' as the criterion.
+</li><p></p>
+                  <li>Natural (nat) variants:
+		<ol>
+		  <li>Sorghum lines selected for whole genome sequencing including 
+diverse varieties from Africa, Striga resistant lines from West Africa, 
+and elite sorghum parent lines.
+<div class="container">
+                <p></p>
+                <div class="row">
+                  <div class="col-md-2"><h4>Entry</h4></div>
+                  <div class="col-md-3"><h4>Pedigree</h4></div>
+                  <div class="col-md-7"><h4>Comments</h4></div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">1</div>
+                  <div class="col-md-3">Tx430</div>
+                  <div class="col-md-7">Elite yellow seed male</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">2</div>
+                  <div class="col-md-3">Tx2752</div>
+                  <div class="col-md-7">Elite red seed female</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">3</div>
+                  <div class="col-md-3">Tx631</div>
+                  <div class="col-md-7">Elite food-grade female</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">4</div>
+                  <div class="col-md-3">TxARG1</div>
+                  <div class="col-md-7">Elite food-grade female</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">5</div>
+                  <div class="col-md-3">Tx436</div>
+                  <div class="col-md-7">Elite food-grade male</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">6</div>
+                  <div class="col-md-3">B N223</div>
+                  <div class="col-md-7">Elite food-grade female – Niger</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">7</div>
+                  <div class="col-md-3">Kuyuma</div>
+                  <div class="col-md-7">Food-grade – Zambia</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">8</div>
+                  <div class="col-md-3">Sepon82</div>
+                  <div class="col-md-7">Food-grade – Niger</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">9</div>
+                  <div class="col-md-3">SK 5912</div>
+                  <div class="col-md-7">Food-type – Nigeria</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">10</div>
+                  <div class="col-md-3">Ajabsido</div>
+                  <div class="col-md-7">Drought tolerance – Sudan</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">11</div>
+                  <div class="col-md-3">CE-151-262-A1</div>
+                  <div class="col-md-7">Food-grade – Senegal</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">12</div>
+                  <div class="col-md-3">CSM-63</div>
+                  <div class="col-md-7">Guinea – Mali</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">13</div>
+                  <div class="col-md-3">Mota Maradi</div>
+                  <div class="col-md-7">Preflowering drought tolerance – Niger</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">14</div>
+                  <div class="col-md-3">Koro Kollo</div>
+                  <div class="col-md-7">Preflowering drought tolerance – Sudan</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">15</div>
+                  <div class="col-md-3">Feterita Gishesh</div>
+                  <div class="col-md-7">Preflowering drought tolerance – Sudan</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">16</div>
+                  <div class="col-md-3">Segeolane</div>
+                  <div class="col-md-7">Preflowering drought tolerance – Botswana</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">17</div>
+                  <div class="col-md-3">SC35</div>
+                  <div class="col-md-7">Postflowering drought tolerance – East Africa</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">18</div>
+                  <div class="col-md-3">PI609567</div>
+                  <div class="col-md-7">Erect-head dhurra – N. Mali</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">19</div>
+                  <div class="col-md-3">MR732</div>
+                  <div class="col-md-7">Elite food-grade male – Niger</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">20</div>
+                  <div class="col-md-3">Wassa</div>
+                  <div class="col-md-7">Food-grade guinea – Mali</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">21</div>
+                  <div class="col-md-3">Seguetana</div>
+                  <div class="col-md-7">Food-grade guinea – Mali</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">22</div>
+                  <div class="col-md-3">El Mota</div>
+                  <div class="col-md-7">Preflowering drought tolerance – Niger</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">23</div>
+                  <div class="col-md-3">Honey Drip</div>
+                  <div class="col-md-7">Sweet</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">24</div>
+                  <div class="col-md-3">Theis</div>
+                  <div class="col-md-7">Sweet</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">25</div>
+                  <div class="col-md-3">SC599</div>
+                  <div class="col-md-7">Postflowering drought tolerance – Converted Rio</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">26</div>
+                  <div class="col-md-3">Framida</div>
+                  <div class="col-md-7">Striga resistant – Burkina faso</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">27</div>
+                  <div class="col-md-3">ICSV1049</div>
+                  <div class="col-md-7">Striga resistant – Burkina faso</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">28</div>
+                  <div class="col-md-3">Sariaso 14</div>
+                  <div class="col-md-7">Striga resistant – LGS – Burkina Faso</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">29</div>
+                  <div class="col-md-3">Grinkan</div>
+                  <div class="col-md-7">Food Grade Guinea – Mali</div>
+                </div> 
+                <div class="row">
+                  <div class="col-md-2">30</div>
+                  <div class="col-md-3">Mace Da Kunya</div>
+                  <div class="col-md-7">Late-maturing dune sorghum – Niger</div>
+                </div></div></li><p></p>
+		<li>Variants in the following lines were identified in sequence data 
+provided in conjunction with this publication: Mace, E. S. et al. 
+Whole-genome sequencing reveals untapped genetic potential in Africa’s 
+indigenous cereal crop sorghum. <i>Nat. Commun.</i> 4:2320 doi: 10.1038/ncomms3320 (2013):<p></p><ul><li>
+ Ai4, B35, B923296, B963676, Cherekit-IBC-E-460, Early_Hegari, 
+Greenleaf, IBC-E-38432, ICSV745, IS3614-2, IS8525, IS9710, Karper_669, 
+Kilo_IBC-E-382, KS115, LR9198, M35-1, Macia, Malisor_84-7, PI525695, 
+PI563516, PI585749, PI586430, QL12, R931945-2-2, Rio, RTx7000, 
+Sb_drummondii-PI330272, Sb_PI226096, Sb_verticilliflorum-AusTRCF_317961,
+ Sb_verticilliflorum-PI300119, SC103-14E, SC108C, SC170-6-8, SC23, 
+SC237-14E, SC326-6, SC35C, SC56-14E, SC62C, S_propinquum-369-1, 
+S_propinquum-369-2, Yik_solate-IBC-E-339, Zengada-IBC-E-308
+	</li></ul><p></p></li></ol>	
+                  </li>
+                </ul>
+              <p class="ng-scope"></p>
+            </div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+    
+              <h3 class="ng-scope">EMS Mutagenized Population</h3>
+              <p style="font-size:14px" class="ng-scope">We have 
+developed an ethyl methanesulfonate (EMS) mutagenized population of 
+12,000 families in the BTx623 generation. We are using this population 
+for fundamental genetic research and sorghum improvement in two ways:</p>
+              <ol class="ng-scope">
+                <li>forward genetic screens for new mutant phenotypes</li>
+                <li>reverse genetic screens to identify useful phenotypes among mutants affected at candidate genes</li>
+              </ol>
+              <p style="font-size:14px" class="ng-scope">Preliminary 
+genetic analyses of the population demonstrated a very high mutation 
+rate. Biochemical screens identified five dhurrin metabolism mutants. 
+Whole genome sequence analyses of one of these mutants revealed 
+approximately 7,000 G to A or C to T Single Nucleotide Polymorphisms 
+(SNPs). Phenotypic characterization of 4800 M4 families from the 
+population identified 24 bmr mutants. Taken together, these results 
+demonstrate our population is highly suitable for new gene and allele 
+discovery.</p>
+              <p style="font-size:14px" class="ng-scope">Genome 
+sequences were generated for 600 EMS lines.  Bioinformatic processing 
+was used to identify all mutations that impact predicted protein 
+sequences.  The database available at this website can be used to 
+identify all detected mutations in EMS lines that have specific 
+phenotypes or to identify EMS lines that contain mutations in specified 
+genes of interest.
+</p>
+<h3 class="ng-scope">SNPs Detection and Annotation Pipeline</h3>
+<p style="font-size:14px" class="ng-scope">A total of 29,972,216,082 and
+ 3,408,790,376 NGS paired-end reads were generated using Illumina HiSeq 
+2500 technology for the 586 EMS-mutagenized and 30 natural variation 
+lines in sorghum, respectively. For the 44 sorghum natural variation 
+lines<sup>1</sup> a total of 7,915,312,158 post-filtered NGS paired-end 
+reads (generated using Illumina HiSeq 2000 technology) were analyzed. 
+The sequenced reads were mapped to the sorghum reference genome<sup>2</sup> assembly (version 2.1) using BWA short reads aligner (version 0.6.2) package<sup>3</sup>. The SAMtools software (version 0.1.18) package<sup>4</sup> was used for the <i>in silico</i>
+ SNPs detection in all the projects, with the exception of the 44 
+natural variation lines, where we used version 0.1.19. In the initial 
+variant calling, only DNA bases with basecalling qualities of at least 
+20 in reads mapping to a candidate genomic position were considered. 
+From the results, variant calls with read coverage depths greater than 
+100 or less than two were excluded. Next, variant calls lacking evidence
+ of mapped NGS reads derived from both strands of the genome at the 
+corresponding genomic position were also removed. Finally, only 
+homozygous SNPs with SNP quality of at least 20 were retained. For the 
+EMS mutagenesis project, the final SNPs were further filtered to remove 
+(shared) SNPs detected in multiple individuals at the same genomic 
+position. The impact of each SNP on gene function was predicted using 
+the snpEff software (version 3.4) suite<sup>5</sup>. All sorghum genes 
+with predicted high or medium SNP impact were further annotated using 
+the available sorghum gene descriptions. Additionally, Arabidopsis 
+thaliana (TAIR10) and maize B73 (version 5b.60) homologs of the sorghum 
+genes were detected using the BLAST software (version 2.2.30+) package<sup>6</sup>.</p>
+<p class="ng-scope"></p>
+<h3 class="ng-scope">Citations:</h3>
+<ol class="ng-scope">
+<li> Mace, E. S. et al. Whole-genome sequencing reveals untapped genetic potential in Africa’s indigenous cereal crop sorghum. <i>Nat. Commun.</i> 4:2320 doi: 10.1038/ncomms3320 (2013)</li>
+<li>Paterson AH, Bowers JE, Bruggmann R, et al. The Sorghum bicolor genome and the diversification of grasses. <i>Nature</i>. 2009;457(7229):551–6. doi:10.1038/nature07723.</li>
+<li>Li H, Durbin R. Fast and accurate short read alignment with Burrows-Wheeler transform. <i>Bioinformatics</i>. 2009;25(14):1754–60. doi:10.1093/bioinformatics/btp324.</li>
+<li>Li H, Handsaker B, Wysoker A, et al. The Sequence Alignment/Map format and SAMtools. <i>Bioinformatics</i>. 2009;25(16):2078–9. doi:10.1093/bioinformatics/btp352.</li>
+<li>Cingolani P, Platts A, Wang LL, et al. A program for annotating and 
+predicting the effects of single nucleotide polymorphisms, SnpEff: SNPs 
+in the genome of Drosophila melanogaster strain w1118; iso-2; iso-3. <i>Fly (Austin)</i>. 2012;6(2):80–92. doi:10.4161/fly.19695.</li>
+<li>Altschul SF, Gish W, Miller W, Myers EW, Lipman DJ. Basic local alignment search tool. <i>J Mol Biol</i>. 1990;215(3):403–10. doi:10.1016/S0022-2836(05)80360-2.</li> 
+</ol>
+            </div><!-- end ngRepeat: tab in tabs --><div class="tab-pane ng-scope" ng-repeat="tab in tabs" ng-class="{active: tab.active}" tab-content-transclude="tab">
+    
+              <h2 class="ng-scope">Contact Information</h2>
+              <p class="ng-scope"></p>
+              <h3 class="ng-scope">Principle Investigators</h3>
+		  <ul class="ng-scope">
+		    <li><a href="https://ag.purdue.edu/agry/directory/Pages/mtuinstr.aspx" target="_blank">Dr. Mitch Tuinstra</a></li>
+		    <li><a href="https://ag.purdue.edu/agry/directory/Pages/cweil.aspx" target="_blank">Dr. Clifford Weil</a></li>
+		    <li><a href="http://web.ics.purdue.edu/~bdilkes/Site/Welcome.html" target="_blank">Dr. Brian Dilkes</a></li>
+                  </ul>
+                  <p class="ng-scope"></p>
+                  <h3 class="ng-scope">Project team members</h3>
+                  <ul class="ng-scope">
+                    <li>Dr. Charles Addo Quaye <i>caddoqua at purdue dot edu</i></li>
+                    <li>Moriah M Massafaro <i>mmassafa at purdue dot edu</i></li>
+                    <li>Molly M McKneight <i>mmckneig at purdue dot edu</i></li>
+                  </ul>
+                  <p class="ng-scope"></p>
+                  <h3 class="ng-scope">Web site questions, issues, and comments</h3>
+                  <ul class="ng-scope">
+                    <li>Jan Erik Backlund <i>jbacklun at purdue dot edu</i></li>
+                  </ul>
+            </div><!-- end ngRepeat: tab in tabs -->
+  </div>
+</div>
+        
+              </div>	   
+      </div>
+      <div class="footer">
+        <div class="container">
+	  <div class="row panel-group" id="accordion">
+	    <div class="panel panel-default col-lg-2 col-md-2 col-sm-2 col-xs-12 left">
+	      <div class="panel-heading">
+	        <h4 class="panel-title"><a class="collapsed" data-parent="#accordion" data-toggle="collapse" href="#footerone">Communication <i class="fa fa-plus right"></i><i class="fa fa-minus right"></i></a></h4>
+	      </div>
+	      <div class="panel-collapse collapse" id="footerone">
+	        <div class="panel-body">
+		  <ul>
+		    <li><a href="https://www.purdue.edu/employeeportal">Employee Portal</a></li>
+		    <li><a href="http://www.itap.purdue.edu/learning/tools/blackboard/">Blackboard</a></li>
+		    <li><a href="http://www.purdue.edu/newsroom/purduetoday/">Purdue Today</a></li>
+		    <li><a href="https://mymail.purdue.edu/">myMail</a></li>
+		    <li><a href="https://exchange.purdue.edu/">Outlook</a></li>
+		    <li><a href="https://wl.mypurdue.purdue.edu/">myPurdue</a></li>
+		  </ul>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="panel panel-default col-lg-2 col-md-2 col-sm-2 col-xs-12 left">
+	      <div class="panel-heading">
+	        <h4 class="panel-title"><a class="collapsed" data-parent="#accordion" data-toggle="collapse" href="#footertwo">Campus <i class="fa fa-plus right"></i><i class="fa fa-minus right"></i></a></h4>
+	      </div>
+	      <div class="panel-collapse collapse" id="footertwo">
+	        <div class="panel-body">
+		  <ul>
+		    <li><a href="http://www.purdue.edu/purdue/information_for/for_faculty_staff_re.html">Faculty and Staff</a></li>
+		    <li><a href="http://www.purdue.edu/ais/">AIS</a></li>
+		    <li><a href="https://www.purdue.edu/physicalfacilities/">Physical Facilities</a></li>
+		    <li><a href="https://www.itap.purdue.edu/directory/">Directory</a></li>
+		    <li><a href="https://www.purdue.edu/campus_map/">Campus Map</a></li>
+		    <li><a href="https://www.purdue.edu/physicalfacilities/constructionmap/index.html">Construction</a></li>
+		  </ul>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="panel panel-default col-lg-2 col-md-2 col-sm-2 col-xs-12 right">
+	      <div class="panel-heading">
+	        <h4 class="panel-title"><a class="collapsed" data-parent="#accordion" data-toggle="collapse" href="#footerthree">Services <i class="fa fa-plus right"></i><i class="fa fa-minus right"></i></a></h4>
+	      </div>
+	      <div class="panel-collapse collapse" id="footerthree">
+	        <div class="panel-body">
+		  <ul>
+		    <li><a href="http://www.itap.purdue.edu/learning/tools/blackboard/">Blackboard</a></li>
+		    <li><a href="http://www.purdue.edu/ehps/">Environmental Health &amp; Public Safety</a></li>
+		    <li><a href="https://www.lib.purdue.edu/">Libraries</a></li>
+		    <li><a href="https://www.itap.purdue.edu/">ITaP</a></li>
+		    <li><a href="https://www.purdue.edu/hr/CHL/index.html">Center for Healthy Living</a></li>
+		  </ul>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="panel panel-default col-lg-2 col-md-2 col-sm-2 col-xs-12 right">
+	      <div class="panel-heading">
+	        <h4 class="panel-title"><a class="collapsed" data-parent="#accordion" data-toggle="collapse" href="#footerfour">Other <i class="fa fa-plus right"></i><i class="fa fa-minus right"></i></a></h4>
+	      </div>
+	      <div class="panel-collapse collapse" id="footerfour">
+	        <div class="panel-body">
+		  <ul>
+		    <li><a href="http://www.purdueofficialstore.com/">Shop</a></li>
+		    <li><a href="http://www.purdue.edu/ethics/clery.html">Clery Reporting Act</a></li>
+		    <li><a href="https://www.purdue.edu/bursar/tuition/calculator/">Tuition Calculator</a></li>
+		    <li><a href="https://www.purdue.edu/ethics/">Ethics &amp; Compliance</a></li>
+		    <li><a href="http://www.purdue.edu/hotline/">Speak Up</a></li>
+		  </ul>
+	        </div>
+	      </div>
+	    </div>
+	    <div class="motto col-lg-4 col-md-4 col-sm-4"><img alt="Moves the World Forward" src="Functional%20Gene%20Discovery%20Platform%20for%20Sorghum%20Genomics_files/wearepurdue.png">
+	      <a href="http://www.facebook.com/PurdueUniversity" target="_blank"><i class="fa fa-facebook"></i></a> <a href="http://twitter.com/LifeAtPurdue" target="_blank"><i class="fa fa-twitter"></i></a> <a href="http://www.youtube.com/purdue" target="_blank"><i class="fa fa-youtube"></i></a> <a href="http://www.instagram.com/lifeatpurdue" target="_blank"><i class="fa fa-instagram"></i></a> <a href="http://www.pinterest.com/lifeatpurdue/" target="_blank"><i class="fa fa-pinterest"></i></a>
+	    </div>
+	  </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="container">
+	  <div class="row">
+	    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	      <p>Purdue University, 610 Purdue Mall, West Lafayette, IN 47907, (765) 494-4600</p>
+	      <p><a href="http://www.purdue.edu/purdue/disclaimer.html"> 2014 Purdue University</a> | <a href="http://www.purdue.edu/purdue/ea_eou_statement.html">An equal access/equal opportunity university</a> | <a href="http://www.purdue.edu/securepurdue/DMCAAgent.cfm">Copyright Complaints</a> | <a href="#">Maintained by Office of XYZ</a></p>
+	      <p>If you have trouble accessing this page because of a disability, please contact Office of XYZ at <a href="mailto:XYZ@purdue.edu">XYZ@purdue.edu</a>.</p>
+	    </div>
+	  </div>
+        </div>
+      </div>
+      <!-- Bootstrap core JavaScript
+      ================================================== --><!-- Placed at the end of the document so the pages load faster --> 
+      <!-- <script async="true" src="//www.purdue.edu/purdue/js/bootstrap.min.js" type="text/javascript"></script> -->
+  
+
+</body></html>
